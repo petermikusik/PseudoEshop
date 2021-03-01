@@ -28,4 +28,12 @@ public class CustomerService {
             throw new IllegalStateException("Customer with id " + id + " does not exists");
         }
     }
+
+    public void addCustomer(Customer customer) {
+        Optional<Customer> customerOptional = customerRepository.findCustomerByEmail(customer.getEmail());
+        if (customerOptional.isPresent()){
+            throw new IllegalStateException("Customer with email " + customer.getEmail() + " already exists");
+        }
+        customerRepository.save(customer);
+    }
 }

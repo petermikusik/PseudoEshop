@@ -2,10 +2,7 @@ package com.example.Shopv2.controller;
 
 import com.example.Shopv2.model.Customer;
 import com.example.Shopv2.service.CustomerService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,5 +23,10 @@ public class CustomerController {
     @GetMapping("/{id}")
     public Customer getCustomerById(@PathVariable("id") Long id){
         return customerService.getCustomerById(id);
+    }
+
+    @PostMapping
+    public void addCustomer(@RequestBody Customer customer){
+        customerService.addCustomer(customer);
     }
 }
