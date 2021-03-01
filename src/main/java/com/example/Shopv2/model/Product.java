@@ -22,12 +22,12 @@ public class Product {
     private Double price;
     @Nullable
     private Timestamp createdAt;
-    private int available;
+    private Integer available;
 
     public Product() {
     }
 
-    public Product(Merchant merchant, String name, String description, Double price, @Nullable Timestamp createdAt, int available) {
+    public Product(Merchant merchant, String name, String description, Double price, @Nullable Timestamp createdAt, Integer available) {
         this.merchant = merchant;
         this.name = name;
         this.description = description;
@@ -36,7 +36,7 @@ public class Product {
         this.available = available;
     }
 
-    public Product(@Nullable Long id, Merchant merchant, String name, String description, Double price, @Nullable Timestamp createdAt, int available) {
+    public Product(@Nullable Long id, Merchant merchant, String name, String description, Double price, @Nullable Timestamp createdAt, Integer available) {
         this.id = id;
         this.merchant = merchant;
         this.name = name;
@@ -96,11 +96,11 @@ public class Product {
         this.createdAt = createdAt;
     }
 
-    public int getAvailable() {
+    public Integer getAvailable() {
         return available;
     }
 
-    public void setAvailable(int available) {
+    public void setAvailable(Integer available) {
         this.available = available;
     }
 
@@ -122,7 +122,7 @@ public class Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return available == product.available && Objects.equals(id, product.id) && Objects.equals(merchant, product.merchant) && Objects.equals(name, product.name) && Objects.equals(description, product.description) && Objects.equals(price, product.price) && Objects.equals(createdAt, product.createdAt);
+        return Objects.equals(id, product.id) && Objects.equals(merchant, product.merchant) && Objects.equals(name, product.name) && Objects.equals(description, product.description) && Objects.equals(price, product.price) && Objects.equals(createdAt, product.createdAt) && Objects.equals(available, product.available);
     }
 
     @Override

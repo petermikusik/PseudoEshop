@@ -16,13 +16,15 @@ public class Customer {
     private String surname;
     private String email;
     private String address;
-    private int age;
+    @Nullable
+    private Integer age;
+    @Nullable
     private String phoneNumber;
 
     public Customer() {
     }
 
-    public Customer(String name, String surname, String email, String address, int age, String phoneNumber) {
+    public Customer(String name, String surname, String email, String address, @Nullable Integer age, @Nullable String phoneNumber) {
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -31,7 +33,7 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    public Customer(Long id, String name, String surname, String email, String address, int age, String phoneNumber) {
+    public Customer(Long id, String name, String surname, String email, String address, @Nullable Integer age, @Nullable String phoneNumber) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -81,19 +83,21 @@ public class Customer {
         this.address = address;
     }
 
-    public int getAge() {
+    @Nullable
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(@Nullable Integer age) {
         this.age = age;
     }
 
+    @Nullable
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(@Nullable String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -115,7 +119,7 @@ public class Customer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return age == customer.age && Objects.equals(id, customer.id) && Objects.equals(name, customer.name) && Objects.equals(surname, customer.surname) && Objects.equals(email, customer.email) && Objects.equals(address, customer.address) && Objects.equals(phoneNumber, customer.phoneNumber);
+        return Objects.equals(id, customer.id) && Objects.equals(name, customer.name) && Objects.equals(surname, customer.surname) && Objects.equals(email, customer.email) && Objects.equals(address, customer.address) && Objects.equals(age, customer.age) && Objects.equals(phoneNumber, customer.phoneNumber);
     }
 
     @Override
