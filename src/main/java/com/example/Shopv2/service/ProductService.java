@@ -1,5 +1,8 @@
 package com.example.Shopv2.service;
 
+import com.example.Shopv2.dto.ProductDTO;
+import com.example.Shopv2.dtoconverter.ProductToDTOConverter;
+import com.example.Shopv2.model.Merchant;
 import com.example.Shopv2.model.Product;
 import com.example.Shopv2.repository.ProductRepository;
 import org.springframework.stereotype.Service;
@@ -11,9 +14,13 @@ import java.util.Optional;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final MerchantService merchantService;
+    private final ProductToDTOConverter productToDTOConverter;
 
-    public ProductService(ProductRepository productRepository) {
+    public ProductService(ProductRepository productRepository, MerchantService merchantService, ProductToDTOConverter productToDTOConverter) {
         this.productRepository = productRepository;
+        this.merchantService = merchantService;
+        this.productToDTOConverter = productToDTOConverter;
     }
 
     public List<Product> getAllProducts() {
@@ -27,5 +34,11 @@ public class ProductService {
         } else {
             throw new IllegalStateException("Product with id " + id + " does not exists");
         }
+    }
+
+
+    public void addProduct(ProductDTO productDTO) {
+        Product product = productToDTOConverter.dtoToEntity(productDTO);
+        productRepository.save(product);
     }
 }

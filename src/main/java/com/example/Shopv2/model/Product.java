@@ -4,7 +4,9 @@ import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.Objects;
 
 @Entity
@@ -27,22 +29,22 @@ public class Product {
     public Product() {
     }
 
-    public Product(Merchant merchant, String name, String description, Double price, @Nullable Timestamp createdAt, Integer available) {
+    public Product(Merchant merchant, String name, String description, Double price, Integer available) {
         this.merchant = merchant;
         this.name = name;
         this.description = description;
         this.price = price;
-        this.createdAt = createdAt;
+        this.createdAt = Timestamp.from(Instant.now());
         this.available = available;
     }
 
-    public Product(@Nullable Long id, Merchant merchant, String name, String description, Double price, @Nullable Timestamp createdAt, Integer available) {
+    public Product(@Nullable Long id, Merchant merchant, String name, String description, Double price, Integer available) {
         this.id = id;
         this.merchant = merchant;
         this.name = name;
         this.description = description;
         this.price = price;
-        this.createdAt = createdAt;
+        this.createdAt = Timestamp.from(Instant.now());;
         this.available = available;
     }
 
