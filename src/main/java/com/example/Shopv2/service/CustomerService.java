@@ -5,6 +5,7 @@ import com.example.Shopv2.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomerService {
@@ -19,4 +20,12 @@ public class CustomerService {
     }
 
 
+    public Customer getCustomerById(Long id) {
+        Optional<Customer> customer = customerRepository.findById(id);
+        if (customer.isPresent()){
+            return customer.get();
+        } else {
+            throw new IllegalStateException("Customer with id " + id + " does not exists");
+        }
+    }
 }
