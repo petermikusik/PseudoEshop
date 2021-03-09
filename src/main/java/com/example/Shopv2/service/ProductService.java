@@ -5,8 +5,10 @@ import com.example.Shopv2.dtoconverter.ProductToDTOConverter;
 import com.example.Shopv2.model.Merchant;
 import com.example.Shopv2.model.Product;
 import com.example.Shopv2.repository.ProductRepository;
+import com.example.Shopv2.request.ProductUpdateRequest;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,8 +38,28 @@ public class ProductService {
         }
     }
 
-
     public void addProduct(Product product) {
         productRepository.save(product);
     }
+
+    @Transactional
+    public void updateProduct(Long id, ProductUpdateRequest productUpdateRequest) {
+        Product product = getProductById(id);
+        if (product != null){
+            if (productUpdateRequest.getName() != null && productUpdateRequest.getName().length() > 0){
+                product.setName(productUpdateRequest.getName());
+            }
+            if (productUpdateRequest.getDescription() != null && productUpdateRequest.getDescription().length() > 0){
+                product.setDescription(productUpdateRequest.getDescription());
+            }
+            if (productUpdateRequest.getPrice() != null && productUpdateRequest.getPrice() >= 0){
+                product.setPrice(productUpdateRequest.getPrice());
+            }
+            if (productUpdateRequest.getAvailable() != null && productUpdateRequest.getAvailable() >= 0){
+                product.setAvailable(productUpdateRequest.getAvailable());
+            }
+        }
+    }
+
+
 }

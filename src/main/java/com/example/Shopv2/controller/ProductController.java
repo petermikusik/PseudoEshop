@@ -3,6 +3,7 @@ package com.example.Shopv2.controller;
 import com.example.Shopv2.dto.ProductDTO;
 import com.example.Shopv2.dtoconverter.ProductToDTOConverter;
 import com.example.Shopv2.model.Product;
+import com.example.Shopv2.request.ProductUpdateRequest;
 import com.example.Shopv2.service.ProductService;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,4 +34,11 @@ public class ProductController {
     public void addProduct(@RequestBody ProductDTO productDTO){
         productService.addProduct(productToDTOConverter.dtoToEntity(productDTO));
     }
+
+    @PatchMapping("/{id}")
+    public void updateProduct(@PathVariable("id") Long id, @RequestBody ProductUpdateRequest productUpdateRequest){
+        productService.updateProduct(id, productUpdateRequest);
+    }
+
+
 }
