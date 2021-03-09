@@ -37,8 +37,7 @@ public class ProductService {
     }
 
 
-    public void addProduct(ProductDTO productDTO) {
-        Product product = productToDTOConverter.dtoToEntity(productDTO);
+    public void addProduct(Product product) {
         productRepository.save(product);
     }
 }

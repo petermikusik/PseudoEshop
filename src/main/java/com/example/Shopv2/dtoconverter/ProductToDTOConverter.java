@@ -6,6 +6,9 @@ import com.example.Shopv2.model.Product;
 import com.example.Shopv2.service.MerchantService;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class ProductToDTOConverter {
     private final MerchantService merchantService;
@@ -34,5 +37,11 @@ public class ProductToDTOConverter {
         dto.setName(product.getName());
         dto.setId(product.getId());
         return dto;
+    }
+
+    public List<ProductDTO> entityListToDtoList(List<Product> productList){
+        List<ProductDTO> productDTOList = new ArrayList<>();
+        productList.forEach((product -> {productDTOList.add(entityToDto(product));}));
+        return productDTOList;
     }
 }
