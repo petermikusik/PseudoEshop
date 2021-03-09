@@ -61,5 +61,10 @@ public class ProductService {
         }
     }
 
-
+    public void deleteProductById(Long id) {
+        if (!productRepository.existsById(id)){
+            throw new IllegalStateException("Product with id " + id + " does not exists");
+        }
+        productRepository.deleteById(id);
+    }
 }
