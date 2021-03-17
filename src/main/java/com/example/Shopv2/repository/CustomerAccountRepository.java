@@ -13,4 +13,9 @@ public interface CustomerAccountRepository extends JpaRepository<CustomerAccount
 
     @Query(value = "update customer_account set money = money + ?2 where customer_id = ?1", nativeQuery = true)
     void addMoneyByCustomerId(int customerId, double value);
+
+    @Query(value = "update customer_account set money = money - ?2 where customer_id = ?1", nativeQuery = true)
+    void subtractMoneyByCustomerId(int customerId, double value);
+
+
 }

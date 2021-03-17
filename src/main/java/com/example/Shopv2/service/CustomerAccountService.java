@@ -23,4 +23,8 @@ public class CustomerAccountService {
     public void addMoney(Long customerId, double money){
         customerAccountRepository.addMoneyByCustomerId(customerId.intValue(), money);
     }
+
+    public void subtractMoney(Long customerId, double money){
+        customerAccountRepository.subtractMoneyByCustomerId(customerId.intValue(), money);
+    }
 }

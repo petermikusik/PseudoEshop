@@ -65,4 +65,8 @@ public class ProductService {
         }
         productRepository.deleteById(id);
     }
+
+    public void updateAvailableInternal(Long productId, int newAvailable){
+        productRepository.updateAvailableInternal(productId.intValue(), newAvailable);
+    }
 }
