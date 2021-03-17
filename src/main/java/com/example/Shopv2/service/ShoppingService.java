@@ -22,7 +22,7 @@ public class ShoppingService {
     }
 
     public void buyProduct(BuyProductRequest buyProductRequest) {
-        Long productId = buyProductRequest.getPruductId();
+        Long productId = buyProductRequest.getProductId();
         Long customerId = buyProductRequest.getCustomerId();
         int quantity = buyProductRequest.getQuantity();
 
