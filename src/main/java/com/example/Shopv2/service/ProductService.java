@@ -1,8 +1,6 @@
 package com.example.Shopv2.service;
 
-import com.example.Shopv2.dto.ProductDTO;
 import com.example.Shopv2.dtoconverter.ProductToDTOConverter;
-import com.example.Shopv2.model.Merchant;
 import com.example.Shopv2.model.Product;
 import com.example.Shopv2.repository.ProductRepository;
 import com.example.Shopv2.request.ProductUpdateRequest;
