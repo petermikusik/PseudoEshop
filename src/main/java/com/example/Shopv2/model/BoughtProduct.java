@@ -2,6 +2,7 @@ package com.example.Shopv2.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.Objects;
 
 @Entity
@@ -23,11 +24,11 @@ public class BoughtProduct {
     public BoughtProduct() {
     }
 
-    public BoughtProduct(Product product, Customer customer, int quantity, Timestamp boughtAt) {
+    public BoughtProduct(Product product, Customer customer, int quantity) {
         this.product = product;
         this.customer = customer;
         this.quantity = quantity;
-        this.boughtAt = boughtAt;
+        this.boughtAt = Timestamp.from(Instant.now());
     }
 
     public BoughtProduct(Long id, Product product, Customer customer, int quantity, Timestamp boughtAt) {
